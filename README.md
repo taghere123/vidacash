@@ -14,8 +14,9 @@ npm install
 npm run dev
 ```
 
-Diseñado mobile-first para un viewport de ~390px (el marco se ve centrado en
-pantallas más anchas).
+Cotizador y Pago siguen el marco mobile-first de ~390px (centrado en
+pantallas más anchas); la landing es una página de marketing responsive de
+ancho completo.
 
 ## Estructura
 
@@ -25,9 +26,12 @@ pantallas más anchas).
   real sin tocar la UI.
 - `src/context/PlanContext.jsx` — estado compartido del plan elegido
   (aporte mensual, años, frecuencia de cobro y resultado) entre las 3
-  pantallas.
-- `src/components/Landing.jsx` — Pantalla 1: landing con hero, beneficios y
-  testimonios.
+  pantallas, incluida la calculadora en vivo de la landing.
+- `src/components/Landing.jsx` — Pantalla 1: landing de 6 secciones (hero,
+  cómo funciona, calculadora en vivo, confianza/respaldo, testimonios, CTA
+  final + footer), compuesta a partir de `src/components/landing/*.jsx`.
+  `landing/Reveal.jsx` anima la entrada de cada sección al hacer scroll
+  (IntersectionObserver, respeta `prefers-reduced-motion`).
 - `src/components/Cotizador.jsx` — Pantalla 2: sliders de aporte/años y
   tarjeta de resultado en vivo.
 - `src/components/Pago.jsx` — Pantalla 3: resumen del plan, formulario de
@@ -37,6 +41,13 @@ pantallas más anchas).
 
 ## Notas de marca
 
-El azul principal (`--color-brand` en `src/index.css`) usa el placeholder
-`#3537a4`; está marcado con un comentario `TODO` para reemplazarlo por el
-hex oficial de marca de Interseguro cuando se defina.
+Los tokens de `src/index.css` (`--color-brand`, `--color-accent`, radios,
+sombras) y la tipografía Manrope vienen del Interseguro Design System real,
+tomado de `web-ui-kit/src/app.css` — ya no son valores placeholder. El único
+pendiente es la fuente "Interseguro Sans" en sí (Manrope es el fallback
+documentado en el manual de marca hasta que se comparta el archivo oficial).
+
+Convención de botones tomada del UI kit: **azul** (`bg-brand`) para
+navegación/progresión (p. ej. "Confirmar plan"), **magenta** (`bg-accent`)
+para la acción de conversión principal (p. ej. "Cotizar ahora",
+"Confirmar compra").

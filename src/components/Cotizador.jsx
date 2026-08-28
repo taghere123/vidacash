@@ -19,7 +19,7 @@ export default function Cotizador({ onBack, onConfirmar }) {
 
       <div className="px-5 py-6 flex flex-col gap-7">
         <div>
-          <h1 className="text-lg font-bold text-slate-900">Arma tu plan</h1>
+          <h1 className="text-lg font-bold text-brand-dark">Arma tu plan</h1>
           <p className="text-sm text-slate-500 mt-1">
             Mueve los controles y mira cómo cambia tu devolución al instante.
           </p>
@@ -74,8 +74,8 @@ export default function Cotizador({ onBack, onConfirmar }) {
         </div>
 
         {/* Tarjeta de resultado */}
-        <div className="rounded-[12px] border border-brand-light bg-brand-soft p-5">
-          <p className="text-sm font-semibold text-slate-700 mb-2">Tu devolución estimada</p>
+        <div className="rounded-[var(--radius-card)] border border-brand-light bg-brand-soft p-5">
+          <p className="text-sm font-semibold text-brand-dark mb-2">Tu devolución estimada</p>
           <span className="inline-block bg-brand text-white text-xs font-bold px-2.5 py-1 rounded-full mb-4">
             {resultado.porcentajeDevolucion}% de tu aporte
           </span>
@@ -95,7 +95,7 @@ export default function Cotizador({ onBack, onConfirmar }) {
             </div>
             <div className="h-px bg-brand-light" />
             <div className="flex justify-between items-baseline">
-              <span className="text-sm font-semibold text-slate-700">Devolución total</span>
+              <span className="text-sm font-semibold text-brand-dark">Devolución total</span>
               <span className="text-xl font-extrabold text-brand">
                 S/ {formatMonto(resultado.devolucionTotal)}
               </span>
@@ -104,11 +104,11 @@ export default function Cotizador({ onBack, onConfirmar }) {
         </div>
 
         {/* Nota fija de sepelio */}
-        <div className="flex items-start gap-2 rounded-[12px] bg-slate-50 border border-slate-100 p-3.5">
+        <div className="flex items-start gap-2 rounded-[12px] bg-brand-tint border border-brand-light p-3.5">
           <span className="text-lg leading-none">🕊️</span>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-brand-dark">
             Tu plan incluye, sin costo adicional, un seguro de sepelio por{' '}
-            <span className="font-semibold text-slate-700">
+            <span className="font-semibold">
               S/ {formatMonto(SEPELIO_MONTO)}
             </span>
             .
@@ -117,7 +117,7 @@ export default function Cotizador({ onBack, onConfirmar }) {
 
         <button
           onClick={onConfirmar}
-          className="w-full bg-brand text-white font-semibold py-3.5 rounded-[12px] active:opacity-90"
+          className="w-full bg-brand hover:bg-brand-hover text-white font-semibold py-3.5 rounded-[12px] transition-colors active:scale-[0.98]"
         >
           Confirmar plan
         </button>
