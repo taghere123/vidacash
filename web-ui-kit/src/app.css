@@ -1,0 +1,376 @@
+/* ui_kits/web/app.css — local stylesheet that uses the design tokens */
+/* =========================================================================
+   Interseguro Design System — Color & Type Tokens
+   Distilled from Manual de lineamientos visuales de marca v1.0.2
+   ========================================================================= */
+
+/* ---- TYPEFACE: Manrope (Google Fonts) as fallback for Interseguro Sans ---- */
+/* TODO: replace with real Interseguro Sans (Book / Regular / Medium / Bold)   */
+/* Manrope is loaded from Google Fonts in index.html (weights 400–800).       */
+
+:root {
+  /* ---------------------------------------------------------------
+     1.  BRAND COLORS  (print + corporate identity)
+     --------------------------------------------------------------- */
+
+  /* Primary corporate */
+  --is-azul-interseguro: #0A6AF5;   /* RGB 10/106/245 — print PMS not applicable on web */
+  --is-blanco-nube:      #E6F1F9;   /* main brand white */
+
+  /* Print-specific (Pantone 2387 C) */
+  --is-azul-impresion:   #0862C8;
+
+  /* Logo color — slightly darker than azul-interseguro */
+  --is-azul-450-logo:    #0960DC;
+
+  /* Secondary brand blues (print + corporate identity) */
+  --is-azul-1:           #80DFFF;   /* lightest */
+  --is-azul-2:           #3BA2F7;
+  --is-azul-3:           #074EAB;
+  --is-azul-4:           #042C6C;   /* darkest */
+
+  /* Accent */
+  --is-magenta:          #F32682;
+
+  /* ---------------------------------------------------------------
+     2.  UI / DIGITAL COLOR RAMPS  (IDIS — for Web Interseguro, mailings)
+     --------------------------------------------------------------- */
+
+  /* Whites / Blancos Interseguro */
+  --is-blanco-940:       #EFF6FB;
+  --is-blanco-960:       #F4F8FC;
+  --is-blanco-980:       #F7FAFD;
+
+  /* Azul Interseguro ramp (the corporate-blue scale) */
+  --is-azul-is-450:      #0960DC;   /* = logo */
+  --is-azul-is-500:      #0A6AF5;   /* = azul-interseguro */
+  --is-azul-is-600:      #0856C4;
+  --is-azul-is-700:      #074EAB;
+  --is-azul-is-940:      #EFF6FB;   /* surface tint */
+
+  /* Azul 1 ramp (cyan-leaning lights) */
+  --is-azul-1-750:       #80DFFF;
+  --is-azul-1-850:       #56C8F0;
+  --is-azul-1-900:       #2EAEDB;
+
+  /* Azul 3 ramp */
+  --is-azul-3-350:       #2B86E0;
+  --is-azul-3-450:       #1466C2;
+  --is-azul-3-550:       #074EAB;
+
+  /* Neutrals (Negro) */
+  --is-negro-200:        #D9DDE3;
+  --is-negro-300:        #9CA3AF;
+  --is-negro-900:        #1F2937;
+
+  /* Grays (UI semantic neutrals) */
+  --is-gray-700:         #6B7280;
+  --is-gray-900:         #374151;
+  --is-gray-970:         #1F2937;
+
+  /* Semantic — Magenta scale (limited use) */
+  --is-magenta-550:      #F32682;
+  --is-magenta-750:      #C81C68;
+  --is-magenta-900:      #8E1149;
+
+  /* Semantic — Rojo (error) */
+  --is-rojo-410:         #F26464;
+  --is-rojo-750:         #C53030;
+  --is-rojo-900:         #821919;
+
+  /* Semantic — Verde (success) */
+  --is-verde-630:        #3AB471;
+  --is-verde-750:        #1F8A5B;
+  --is-verde-900:        #115637;
+
+  /* Semantic — Amarillo (warning) */
+  --is-amarillo-620:     #F5C534;
+  --is-amarillo-750:     #C99A1B;
+  --is-amarillo-900:     #7E5F0B;
+
+  /* ---------------------------------------------------------------
+     3.  SEMANTIC TOKENS  (use these in components)
+     --------------------------------------------------------------- */
+
+  /* Foreground */
+  --fg-primary:          #042C6C;   /* azul-4 */
+  --fg-secondary:        var(--is-gray-700);
+  --fg-tertiary:         var(--is-negro-300);
+  --fg-on-blue:          #FFFFFF;
+  --fg-link:             var(--is-azul-is-500);
+
+  /* Background */
+  --bg-canvas:           #FFFFFF;
+  --bg-subtle:           var(--is-blanco-980);
+  --bg-muted:            var(--is-blanco-nube);
+  --bg-brand:            var(--is-azul-is-500);
+  --bg-brand-deep:       var(--is-azul-4);
+
+  /* Borders */
+  --border-subtle:       var(--is-negro-200);
+  --border-strong:       var(--is-gray-700);
+
+  /* State */
+  --color-success:       var(--is-verde-750);
+  --color-warning:       var(--is-amarillo-620);
+  --color-error:         var(--is-rojo-750);
+  --color-accent:        var(--is-magenta);
+
+  /* ---------------------------------------------------------------
+     4.  TYPOGRAPHY  (Interseguro Sans → Manrope fallback)
+     --------------------------------------------------------------- */
+
+  --font-sans: "Interseguro Sans", "Manrope", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-email: "Helvetica", Arial, sans-serif;  /* mail/GSuite per manual */
+
+  /* Weights, named per manual */
+  --fw-book:    400;
+  --fw-regular: 500;
+  --fw-medium:  600;
+  --fw-bold:    700;
+
+  /* Display + heading scale (1.250 ratio, anchored at 16px body) */
+  --fs-display:  64px;   --lh-display: 1.05;   --tr-display: -0.025em;
+  --fs-h1:       48px;   --lh-h1:      1.08;   --tr-h1:      -0.02em;
+  --fs-h2:       36px;   --lh-h2:      1.15;   --tr-h2:      -0.015em;
+  --fs-h3:       28px;   --lh-h3:      1.2;    --tr-h3:      -0.01em;
+  --fs-h4:       22px;   --lh-h4:      1.3;    --tr-h4:      -0.005em;
+  --fs-body-lg:  18px;   --lh-body-lg: 1.55;
+  --fs-body:     16px;   --lh-body:    1.55;
+  --fs-body-sm:  14px;   --lh-body-sm: 1.5;
+  --fs-caption:  12px;   --lh-caption: 1.4;    --tr-caption: 0.02em;
+
+  /* ---------------------------------------------------------------
+     5.  SPACING, RADII, SHADOW
+     --------------------------------------------------------------- */
+
+  /* 4px base scale */
+  --sp-0:  0;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;     /* buttons, inputs */
+  --radius-lg: 16px;     /* small cards */
+  --radius-xl: 20px;     /* cards */
+  --radius-2xl: 28px;    /* hero containers */
+  --radius-pill: 999px;
+
+  /* Shadows — all tinted with Azul 4 (#042C6C) */
+  --shadow-flat:  none;
+  --shadow-rest:  0 1px 2px rgba(4,44,108,0.06), 0 1px 3px rgba(4,44,108,0.04);
+  --shadow-hover: 0 4px 12px rgba(4,44,108,0.08), 0 2px 4px rgba(4,44,108,0.04);
+  --shadow-lift:  0 12px 32px rgba(4,44,108,0.12), 0 4px 8px rgba(4,44,108,0.06);
+  --shadow-modal: 0 24px 64px rgba(4,44,108,0.18), 0 8px 16px rgba(4,44,108,0.08);
+  --shadow-focus: 0 0 0 3px rgba(10,106,245,0.30);
+  --shadow-inner-glass: inset 0 1px 0 rgba(255,255,255,0.30);
+
+  /* Motion */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:  120ms;
+  --dur-base:  200ms;
+  --dur-slow:  320ms;
+}
+
+/* =========================================================================
+   SEMANTIC ELEMENT STYLES
+   ========================================================================= */
+
+html, body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-book);
+  color: var(--fg-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.is-display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: var(--fw-bold);
+}
+h1, .is-h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--tr-h1);
+  font-weight: var(--fw-bold);
+}
+h2, .is-h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--tr-h2);
+  font-weight: var(--fw-bold);
+}
+h3, .is-h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--tr-h3);
+  font-weight: var(--fw-medium);
+}
+h4, .is-h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--tr-h4);
+  font-weight: var(--fw-medium);
+}
+p, .is-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-book);
+}
+.is-body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+  font-weight: var(--fw-book);
+}
+.is-body-sm, small {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body-sm);
+  font-weight: var(--fw-book);
+}
+.is-caption {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--tr-caption);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+}
+
+/* Italic explicitly forbidden by the manual */
+em, i { font-style: normal; font-weight: var(--fw-medium); }
+
+
+* { box-sizing: border-box; }
+html, body, #root {
+  margin: 0; padding: 0;
+  font-family: var(--font-sans);
+  color: var(--fg-primary);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font-family: inherit; }
+a { color: var(--is-azul-is-500); text-decoration: none; }
+a:hover { opacity: 0.85; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background var(--dur-base) var(--ease-std),
+              box-shadow var(--dur-base) var(--ease-std),
+              opacity var(--dur-base) var(--ease-std);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible { box-shadow: var(--shadow-focus); outline: none; }
+.btn-primary { background: var(--is-azul-is-500); color: #fff; }
+.btn-primary:hover { background: var(--is-azul-is-600); }
+.btn-secondary { background: var(--is-blanco-940); color: var(--is-azul-3); }
+.btn-secondary:hover { background: var(--is-blanco-nube); }
+.btn-ghost { background: transparent; color: var(--is-azul-is-500); border: 1px solid var(--is-azul-is-500); }
+.btn-ghost:hover { background: var(--is-blanco-940); }
+.btn-accent { background: var(--is-magenta); color: #fff; }
+.btn-accent:hover { background: var(--is-magenta-750); }
+.btn-dark { background: var(--is-azul-4); color: #fff; }
+.btn-dark:hover { background: #021f4d; }
+.btn-sm { font-size: 13px; padding: 8px 14px; border-radius: 10px; }
+.btn-lg { font-size: 17px; padding: 16px 28px; border-radius: 14px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* ===== Inputs ===== */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 12px; font-weight: 600; color: var(--is-gray-900); }
+.field-hint  { font-size: 11px; color: var(--is-gray-700); }
+.field-error { font-size: 11px; color: var(--is-rojo-750); }
+.input {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  color: var(--is-azul-4);
+  outline: none;
+  transition: border-color var(--dur-base) var(--ease-std), box-shadow var(--dur-base) var(--ease-std);
+}
+.input::placeholder { color: var(--is-negro-300); }
+.input:focus { border-color: var(--is-azul-is-500); box-shadow: var(--shadow-focus); }
+.input.error { border-color: var(--is-rojo-410); background: #FFF7F7; }
+
+/* ===== Card ===== */
+.card-base {
+  background: #fff;
+  border: 1px solid var(--is-negro-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-rest);
+  transition: box-shadow var(--dur-base) var(--ease-std), transform var(--dur-base) var(--ease-out);
+}
+.card-base:hover { box-shadow: var(--shadow-hover); }
+
+/* ===== Layout shell ===== */
+.shell { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 72px 0; }
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--is-azul-is-500);
+}
+
+/* ===== Tag / pill ===== */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+  background: var(--is-blanco-940);
+  color: var(--is-azul-3);
+}
+.tag-new { background: var(--is-magenta); color: #fff; font-size: 10px; padding: 3px 8px; font-weight: 700; }
+.tag-success { background: #E7F8EF; color: var(--is-verde-750); }
+.tag-warn { background: #FFF6D9; color: var(--is-amarillo-900); }
+.tag-error { background: #FFEAEA; color: var(--is-rojo-750); }
+
+/* ===== Misc helpers ===== */
+.h1 { font-size: 48px; line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; color: var(--is-azul-4); margin: 0; }
+.h2 { font-size: 36px; line-height: 1.1; letter-spacing: -0.015em; font-weight: 700; color: var(--is-azul-4); margin: 0; }
+.h3 { font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; font-weight: 600; color: var(--is-azul-4); margin: 0; }
+.lead { font-size: 18px; line-height: 1.55; color: var(--is-gray-900); margin: 0; }
+.body { font-size: 15px; line-height: 1.55; color: var(--is-gray-900); margin: 0; }
+.small { font-size: 13px; line-height: 1.5; color: var(--is-gray-700); margin: 0; }
+
+/* ===== Glass over photo ===== */
+.glass {
+  background: rgba(10,106,245,0.55);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-inner-glass), var(--shadow-lift);
+  color: #fff;
+}
