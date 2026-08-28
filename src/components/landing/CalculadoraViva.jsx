@@ -76,25 +76,27 @@ export default function CalculadoraViva({ onContinuar }) {
 
             <div className="text-center">
               <p className="text-sm font-semibold text-slate-500">Recibes de vuelta</p>
-              <p className="text-6xl sm:text-7xl font-extrabold text-brand tracking-tight mt-2">
-                {resultado.porcentajeDevolucion}%
-              </p>
-              <p className="text-sm text-slate-500 mt-1">de todo lo que aportaste</p>
-
-              <div className="flex justify-center gap-10 mt-8 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-2">
                 <div>
-                  <p className="text-slate-400">Aporte total</p>
-                  <p className="font-bold text-brand-dark mt-0.5">
-                    S/ {formatMonto(resultado.aporteTotal)}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-slate-400">Devolución total</p>
-                  <p className="font-bold text-brand-dark mt-0.5">
+                  <p className="text-4xl sm:text-6xl font-extrabold text-brand tracking-tight">
                     S/ {formatMonto(resultado.devolucionTotal)}
                   </p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">devolución total</p>
+                </div>
+                <div>
+                  <p className="text-4xl sm:text-6xl font-extrabold text-brand tracking-tight">
+                    {resultado.porcentajeDevolucion}%
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">de tu aporte</p>
                 </div>
               </div>
+
+              <p className="text-sm text-slate-400 mt-8">
+                Aporte total:{' '}
+                <span className="font-semibold text-brand-dark">
+                  S/ {formatMonto(resultado.aporteTotal)}
+                </span>
+              </p>
             </div>
 
             <div className="flex items-start gap-2 rounded-[12px] bg-brand-tint border border-brand-light p-3.5 mt-8">
