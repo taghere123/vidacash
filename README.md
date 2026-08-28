@@ -14,8 +14,9 @@ npm install
 npm run dev
 ```
 
-Diseñado mobile-first para un viewport de ~390px (el marco se ve centrado en
-pantallas más anchas).
+Cotizador y Pago siguen el marco mobile-first de ~390px (centrado en
+pantallas más anchas); la landing es una página de marketing responsive de
+ancho completo.
 
 ## Estructura
 
@@ -25,9 +26,12 @@ pantallas más anchas).
   real sin tocar la UI.
 - `src/context/PlanContext.jsx` — estado compartido del plan elegido
   (aporte mensual, años, frecuencia de cobro y resultado) entre las 3
-  pantallas.
-- `src/components/Landing.jsx` — Pantalla 1: landing con hero, beneficios y
-  testimonios.
+  pantallas, incluida la calculadora en vivo de la landing.
+- `src/components/Landing.jsx` — Pantalla 1: landing de 6 secciones (hero,
+  cómo funciona, calculadora en vivo, confianza/respaldo, testimonios, CTA
+  final + footer), compuesta a partir de `src/components/landing/*.jsx`.
+  `landing/Reveal.jsx` anima la entrada de cada sección al hacer scroll
+  (IntersectionObserver, respeta `prefers-reduced-motion`).
 - `src/components/Cotizador.jsx` — Pantalla 2: sliders de aporte/años y
   tarjeta de resultado en vivo.
 - `src/components/Pago.jsx` — Pantalla 3: resumen del plan, formulario de

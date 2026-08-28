@@ -13,11 +13,21 @@ const PANTALLAS = {
 function App() {
   const [pantalla, setPantalla] = useState(PANTALLAS.LANDING)
 
+  // La landing es una página de marketing responsive (secciones a ancho
+  // completo); Cotizador y Pago siguen simulando una pantalla de celular
+  // (~390px) para la revisión del prototipo.
+  const esLanding = pantalla === PANTALLAS.LANDING
+
   return (
     <PlanProvider>
       <div className="min-h-screen bg-slate-200 flex justify-center">
-        {/* Marco mobile-first (~390px) para revisión del prototipo */}
-        <div className="w-full max-w-[390px] min-h-screen bg-white shadow-sm">
+        <div
+          className={
+            esLanding
+              ? 'w-full min-h-screen bg-white'
+              : 'w-full max-w-[390px] min-h-screen bg-white shadow-sm'
+          }
+        >
           {pantalla === PANTALLAS.LANDING && (
             <Landing onCotizar={() => setPantalla(PANTALLAS.COTIZADOR)} />
           )}
