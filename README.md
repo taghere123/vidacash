@@ -37,6 +37,13 @@ pantallas más anchas).
 
 ## Notas de marca
 
-El azul principal (`--color-brand` en `src/index.css`) usa el placeholder
-`#3537a4`; está marcado con un comentario `TODO` para reemplazarlo por el
-hex oficial de marca de Interseguro cuando se defina.
+Los tokens de `src/index.css` (`--color-brand`, `--color-accent`, radios,
+sombras) y la tipografía Manrope vienen del Interseguro Design System real,
+tomado de `web-ui-kit/src/app.css` — ya no son valores placeholder. El único
+pendiente es la fuente "Interseguro Sans" en sí (Manrope es el fallback
+documentado en el manual de marca hasta que se comparta el archivo oficial).
+
+Convención de botones tomada del UI kit: **azul** (`bg-brand`) para
+navegación/progresión (p. ej. "Confirmar plan"), **magenta** (`bg-accent`)
+para la acción de conversión principal (p. ej. "Cotizar ahora",
+"Confirmar compra").

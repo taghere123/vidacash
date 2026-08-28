@@ -37,8 +37,8 @@ export default function Pago({ onVolverInicio }) {
 
       <div className="px-5 py-6 flex flex-col gap-6">
         {/* Resumen del plan */}
-        <div className="rounded-[12px] bg-brand-soft border border-brand-light p-4">
-          <p className="text-sm font-semibold text-slate-700 mb-3">Resumen de tu plan</p>
+        <div className="rounded-[var(--radius-card)] bg-brand-soft border border-brand-light p-4">
+          <p className="text-sm font-semibold text-brand-dark mb-3">Resumen de tu plan</p>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-slate-500">Aporte mensual</span>
@@ -69,17 +69,17 @@ export default function Pago({ onVolverInicio }) {
 
         {/* Frecuencia de cobro */}
         <div>
-          <p className="text-sm font-semibold text-slate-700 mb-2">Frecuencia de cobro</p>
+          <p className="text-sm font-semibold text-brand-dark mb-2">Frecuencia de cobro</p>
           <div className="grid grid-cols-2 gap-3">
             {['mensual', 'anual'].map((opcion) => (
               <button
                 key={opcion}
                 type="button"
                 onClick={() => setFrecuenciaCobro(opcion)}
-                className={`py-2.5 rounded-[12px] text-sm font-semibold border capitalize ${
+                className={`py-2.5 rounded-[12px] text-sm font-semibold border capitalize transition-colors ${
                   frecuenciaCobro === opcion
                     ? 'bg-brand text-white border-brand'
-                    : 'bg-white text-slate-600 border-slate-200'
+                    : 'bg-white text-slate-600 border-[#D9DDE3]'
                 }`}
               >
                 {opcion}
@@ -90,7 +90,7 @@ export default function Pago({ onVolverInicio }) {
 
         {/* Formulario de tarjeta (solo visual, sin validación ni pasarela real) */}
         <div>
-          <p className="text-sm font-semibold text-slate-700 mb-3">Datos de la tarjeta</p>
+          <p className="text-sm font-semibold text-brand-dark mb-3">Datos de la tarjeta</p>
           <div className="flex flex-col gap-3">
             <div>
               <label className="text-xs text-slate-500">Número de tarjeta</label>
@@ -100,7 +100,7 @@ export default function Pago({ onVolverInicio }) {
                 placeholder="0000 0000 0000 0000"
                 value={numeroTarjeta}
                 onChange={(e) => setNumeroTarjeta(formatearNumeroTarjeta(e.target.value))}
-                className="mt-1 w-full rounded-[12px] border border-slate-200 px-3.5 py-3 text-sm focus:outline-none focus:border-brand"
+                className="mt-1 w-full rounded-[12px] border border-[#D9DDE3] px-3.5 py-3 text-sm focus:outline-none focus:border-brand transition-colors"
               />
             </div>
 
@@ -111,7 +111,7 @@ export default function Pago({ onVolverInicio }) {
                 placeholder="Como figura en la tarjeta"
                 value={nombreTitular}
                 onChange={(e) => setNombreTitular(e.target.value)}
-                className="mt-1 w-full rounded-[12px] border border-slate-200 px-3.5 py-3 text-sm focus:outline-none focus:border-brand"
+                className="mt-1 w-full rounded-[12px] border border-[#D9DDE3] px-3.5 py-3 text-sm focus:outline-none focus:border-brand transition-colors"
               />
             </div>
 
@@ -124,7 +124,7 @@ export default function Pago({ onVolverInicio }) {
                   placeholder="MM/AA"
                   value={expiracion}
                   onChange={(e) => setExpiracion(formatearExpiracion(e.target.value))}
-                  className="mt-1 w-full rounded-[12px] border border-slate-200 px-3.5 py-3 text-sm focus:outline-none focus:border-brand"
+                  className="mt-1 w-full rounded-[12px] border border-[#D9DDE3] px-3.5 py-3 text-sm focus:outline-none focus:border-brand transition-colors"
                 />
               </div>
               <div>
@@ -136,7 +136,7 @@ export default function Pago({ onVolverInicio }) {
                   maxLength={4}
                   value={cvv}
                   onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                  className="mt-1 w-full rounded-[12px] border border-slate-200 px-3.5 py-3 text-sm focus:outline-none focus:border-brand"
+                  className="mt-1 w-full rounded-[12px] border border-[#D9DDE3] px-3.5 py-3 text-sm focus:outline-none focus:border-brand transition-colors"
                 />
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Pago({ onVolverInicio }) {
           type="button"
           disabled={!formularioCompleto}
           onClick={() => setCompraConfirmada(true)}
-          className="w-full bg-brand text-white font-semibold py-3.5 rounded-[12px] active:opacity-90 disabled:opacity-40"
+          className="w-full bg-accent hover:bg-accent-hover text-white font-semibold py-3.5 rounded-[12px] transition-colors active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100"
         >
           Confirmar compra
         </button>
@@ -175,18 +175,18 @@ export default function Pago({ onVolverInicio }) {
       {/* Modal de éxito simulado */}
       {compraConfirmada && (
         <div className="fixed inset-0 z-20 flex items-end sm:items-center justify-center bg-slate-900/40 px-4 py-6">
-          <div className="w-full max-w-[358px] bg-white rounded-[12px] p-6 text-center">
-            <div className="w-14 h-14 mx-auto rounded-full bg-brand-soft flex items-center justify-center text-2xl">
+          <div className="w-full max-w-[358px] bg-white rounded-[var(--radius-card)] p-6 text-center">
+            <div className="w-14 h-14 mx-auto rounded-full bg-brand-tint flex items-center justify-center text-2xl">
               ✅
             </div>
-            <h2 className="text-lg font-bold text-slate-900 mt-4">¡Compra confirmada!</h2>
+            <h2 className="text-lg font-bold text-brand-dark mt-4">¡Compra confirmada!</h2>
             <p className="text-sm text-slate-500 mt-2">
               Tu plan Ahorro Plus con Sepelio de S/ {formatMonto(aporteMensual)} al mes por{' '}
               {anios} {anios === 1 ? 'año' : 'años'} quedó registrado.
             </p>
             <button
               onClick={onVolverInicio}
-              className="mt-6 w-full bg-brand text-white font-semibold py-3 rounded-[12px] active:opacity-90"
+              className="mt-6 w-full bg-brand hover:bg-brand-hover text-white font-semibold py-3 rounded-[12px] transition-colors active:scale-[0.98]"
             >
               Volver al inicio
             </button>

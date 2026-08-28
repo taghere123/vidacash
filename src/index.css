@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
+/* =========================================================================
+   Tokens tomados del Interseguro Design System real (ver web-ui-kit/src/app.css):
+   azul de marca #0A6AF5, magenta de acento, Manrope, radios y sombras.
+   ========================================================================= */
 @theme {
-  /* TODO: reemplazar con hex oficial de marca Interseguro */
-  --color-brand: #3537a4;
-  --color-brand-dark: #262873;
-  --color-brand-light: #eceefa;
-  --color-brand-soft: #f5f6fd;
+  --color-brand: #0a6af5; /* is-azul-is-500 */
+  --color-brand-hover: #0856c4; /* is-azul-is-600 */
+  --color-brand-dark: #042c6c; /* is-azul-4 — texto/headings sobre fondo claro */
+  --color-brand-light: #eff6fb; /* is-blanco-940 — tags, bordes tintados */
+  --color-brand-soft: #f7fafd; /* is-blanco-980 — fondos de sección */
+  --color-brand-tint: #e6f1f9; /* is-blanco-nube — chips/íconos sobre blanco */
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-accent: #f32682; /* magenta — reservado para el CTA principal */
+  --color-accent-hover: #c81c68;
 
-  --radius-card: 12px;
+  --color-border-subtle: #d9dde3; /* is-negro-200 */
+
+  --font-sans:
+    "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* TODO: reemplazar "Manrope" por Interseguro Sans cuando esté disponible el archivo de fuente oficial */
+
+  --radius-card: 20px; /* radius-xl del design system */
 }
 
 body {
@@ -18,7 +30,26 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Slider (range input) — estilo plano, sin sombras pesadas */
+/* El manual de marca prohíbe la cursiva: nunca usar font-style: italic */
+em,
+i {
+  font-style: normal;
+}
+
+/* Sombra de tarjeta — tintada con azul-4, igual que --shadow-rest / --shadow-hover del kit */
+.card-shadow {
+  box-shadow:
+    0 1px 2px rgba(4, 44, 108, 0.06),
+    0 1px 3px rgba(4, 44, 108, 0.04);
+  transition: box-shadow 200ms;
+}
+.card-shadow:hover {
+  box-shadow:
+    0 4px 12px rgba(4, 44, 108, 0.08),
+    0 2px 4px rgba(4, 44, 108, 0.04);
+}
+
+/* Slider (range input) */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -48,4 +79,12 @@ input[type="range"]::-moz-range-thumb {
   border: 3px solid #ffffff;
   box-shadow: 0 0 0 1px var(--color-brand);
   cursor: pointer;
+}
+
+/* Focus ring — misma fórmula que --shadow-focus del design system */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="range"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 106, 245, 0.3);
 }

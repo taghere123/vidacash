@@ -19,7 +19,7 @@ export default function Landing({ onCotizar }) {
 
       {/* Hero */}
       <section className="px-5 pt-8 pb-6 bg-brand-soft">
-        <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">
+        <h1 className="text-2xl font-extrabold text-brand-dark leading-tight">
           Ahorra con <span className="text-brand">Ahorro Plus</span> y protege a
           quienes más amas
         </h1>
@@ -38,8 +38,7 @@ export default function Landing({ onCotizar }) {
 
         <button
           onClick={onCotizar}
-          // TODO: reemplazar con hex oficial de marca Interseguro (#3537a4)
-          className="mt-6 w-full bg-brand text-white font-semibold py-3.5 rounded-[12px] active:opacity-90"
+          className="mt-6 w-full bg-accent hover:bg-accent-hover text-white font-semibold py-3.5 rounded-[12px] transition-colors active:scale-[0.98]"
         >
           Cotizar ahora
         </button>
@@ -47,16 +46,16 @@ export default function Landing({ onCotizar }) {
 
       {/* Beneficios */}
       <section className="px-5 py-7">
-        <h2 className="text-base font-bold text-slate-900 mb-4">Beneficios de tu plan</h2>
+        <h2 className="text-base font-bold text-brand-dark mb-4">Beneficios de tu plan</h2>
         <div className="grid grid-cols-1 gap-3">
           {BENEFICIOS.map((b) => (
             <div
               key={b.titulo}
-              className="flex items-start gap-3 rounded-[12px] border border-slate-100 bg-white p-4"
+              className="card-shadow flex items-start gap-3 rounded-[var(--radius-card)] border border-[#D9DDE3] bg-white p-4"
             >
               <span className="text-2xl leading-none">{b.icono}</span>
               <div>
-                <p className="text-sm font-semibold text-slate-800">{b.titulo}</p>
+                <p className="text-sm font-semibold text-brand-dark">{b.titulo}</p>
                 <p className="text-sm text-slate-500 mt-0.5">{b.texto}</p>
               </div>
             </div>
@@ -65,13 +64,14 @@ export default function Landing({ onCotizar }) {
       </section>
 
       {/* Testimonios */}
-      <section className="px-5 py-7 bg-slate-50">
-        <h2 className="text-base font-bold text-slate-900 mb-4">Lo que dicen nuestros clientes</h2>
+      <section className="px-5 py-7 bg-brand-soft">
+        <h2 className="text-base font-bold text-brand-dark mb-4">Lo que dicen nuestros clientes</h2>
         <div className="flex flex-col gap-3">
           {TESTIMONIOS.map((t) => (
-            <div key={t.nombre} className="rounded-[12px] bg-white border border-slate-100 p-4">
-              <p className="text-sm text-slate-700 italic">“{t.texto}”</p>
-              <p className="text-xs font-semibold text-slate-800 mt-3">{t.nombre}</p>
+            <div key={t.nombre} className="card-shadow rounded-[var(--radius-card)] bg-white border border-[#D9DDE3] p-4">
+              <span className="text-brand text-lg leading-none">“</span>
+              <p className="text-sm text-brand-dark font-medium -mt-1">{t.texto}”</p>
+              <p className="text-xs font-semibold text-brand-dark mt-3">{t.nombre}</p>
               <p className="text-xs text-slate-400">{t.ciudad}</p>
             </div>
           ))}
@@ -82,7 +82,7 @@ export default function Landing({ onCotizar }) {
       <section className="px-5 py-7">
         <button
           onClick={onCotizar}
-          className="w-full bg-brand text-white font-semibold py-3.5 rounded-[12px] active:opacity-90"
+          className="w-full bg-accent hover:bg-accent-hover text-white font-semibold py-3.5 rounded-[12px] transition-colors active:scale-[0.98]"
         >
           Cotizar ahora
         </button>
